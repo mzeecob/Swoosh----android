@@ -2,9 +2,10 @@ package com.example.swoosh.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.swoosh.Model.Player
 import com.example.swoosh.R
-import com.example.swoosh.Utilities.EXTRA_LEAGUE
-import com.example.swoosh.Utilities.EXTRA_SKILL
+import com.example.swoosh.Utilities.EXTRA_PLAYER
+
 import kotlinx.android.synthetic.main.activity_finish.*
 
 class FinishActivity : AppCompatActivity() {
@@ -13,12 +14,8 @@ class FinishActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish)
 
-        val league = intent.getStringArrayExtra(EXTRA_LEAGUE)
-        val skill = intent.getStringArrayExtra(EXTRA_SKILL)
-
-
-        searchLeaguesText.text = "Looking for $league $skill near you ...."
-
+        var player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
+        searchLeaguesText.text = "Looking for ${player.league} ${player.skill} near you ...."
 
 
     }
